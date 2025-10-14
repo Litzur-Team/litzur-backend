@@ -1,0 +1,13 @@
+node_modules
+
+.gitignore
+
+.prettierrc
+.eslintrc
+
+package.json
+package-lock.json
+
+tsconfig.json
+
+*.md
