@@ -12,7 +12,9 @@
     "rootDir": "./src",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/types": ["types/*"],
+      "@/*": ["src/*"],
+      "@utils/*": ["utils/*"]
     },
     "resolveJsonModule": true,
     "declaration": true,
