@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import { User, CreateUserDto, UpdateUserDto } from '../../types/user.types.js';
 
 const users: User[] = [

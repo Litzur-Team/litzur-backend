@@ -5,7 +5,7 @@ const options: swaggerJsdoc.Operation = {
         openapi: '3.0.0',
         info: {
             title: 'Litzur',
-            version: '1.0.0',
+            version: '1.0',
             description: 'Documentação API REST - Litzur'
         },
         servers: [
