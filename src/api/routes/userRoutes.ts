@@ -4,7 +4,7 @@ const router = express.Router();
 import UserController from '../controllers/userController.js';
 import UserService from '../../core/services/userService.js';
 import UserRepository from '../../core/repositories/userRepository.js';
-import { authenticateJWT } from '../../middleware/authenticateJWT';
+import { authenticateJWT } from '../../middleware/authenticateJWT.js';
 
 const userRepository = new UserRepository();
 const userService = new UserService(userRepository);

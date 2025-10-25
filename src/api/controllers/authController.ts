@@ -1,8 +1,8 @@
-import { GetUserByEmailUseCase } from "../../application/useCases/GetUserByEmailUseCase";
-import UserRepository from "../../core/repositories/userRepository";
+import { GetUserByEmailUseCase } from "../../application/useCases/GetUserByEmailUseCase.js";
+import UserRepository from "../../core/repositories/userRepository.js";
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import { generateToken } from '../../utils/jwt';
+import { generateToken } from '../../utils/jwt.js';
 
 export class AuthController{
     private readonly getUserByEmailUseCase: GetUserByEmailUseCase;

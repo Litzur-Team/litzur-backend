@@ -1,5 +1,5 @@
-import UserRepository from '../../core/repositories/userRepository';
-import { User } from '../../types/user.types';
+import UserRepository from '../../core/repositories/userRepository.js';
+import { User } from '../../types/user.types.js';
 
 export class GetUserByEmailUseCase {
     constructor(private userRepository: UserRepository) {}
