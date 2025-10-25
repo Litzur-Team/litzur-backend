@@ -16,14 +16,25 @@ class UserService {
     return this.userRepository.getById(id);
   }
 
-  createUser(userData: CreateUserDto): User {
+  async createUser(userData: CreateUserDto): Promise<User> {
     if (!userData.name || userData.name.trim() === '') {
       throw new Error('O nome do usuário é obrigatório.');
     }
     if (!userData.email || userData.email.trim() === '') {
       throw new Error('O email do usuário é obrigatório.');
     }
-    return this.userRepository.create(userData);
+    if (!userData.password || userData.password.trim() === '') {
+      throw new Error('A senha do usuário é obrigatória.');
+    }
+
+    // Hash da senha antes de salvar
+    const bcrypt = await import('bcrypt');
+    const hashedPassword = await bcrypt.hash(userData.password, 10);
+    
+    return this.userRepository.create({
+      ...userData,
+      password: hashedPassword
+    });
   }
 
   updateUser(id: string, userData: UpdateUserDto): User | undefined {
