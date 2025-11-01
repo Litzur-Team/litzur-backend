@@ -1,5 +1,5 @@
-import app from "./app.js";
 import config from "./config/index.js";
+import app from "./app.js";
 import swaggerUI from "swagger-ui-express"
 import { swaggerSpec } from "./config/swagger.config.js";
 

@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { CreateUserDto, UpdateUserDto } from '../../types/user.types.js';
 import UserService from '../../core/services/userService.js';
+import { createUserSchema, updateUserSchema } from '../validators/user.validator.js';
+import { formatZodError } from '../validators/zodErrorFormatter.js';
 
 class UserController {
   private userService: UserService;
@@ -49,8 +51,9 @@ class UserController {
 
   async createUser(req: Request, res: Response): Promise<void> {
     try {
-      const userData: CreateUserDto = req.body;
-      const user = this.userService.createUser(userData);
+      // validatedBody is populated by validateBody middleware
+      const userData: CreateUserDto = (req as any).validatedBody ?? req.body;
+      const user = await this.userService.createUser(userData);
       res.status(201).json(user);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Erro ao criar usuário';
@@ -65,8 +68,8 @@ class UserController {
         res.status(400).json({ message: 'ID do usuário é obrigatório' });
         return;
       }
-      
-      const userData: UpdateUserDto = req.body;
+      // validatedBody is populated by validateBody middleware
+      const userData: UpdateUserDto = (req as any).validatedBody ?? req.body;
       const user = this.userService.updateUser(id, userData);
       res.status(200).json(user);
     } catch (error) {
