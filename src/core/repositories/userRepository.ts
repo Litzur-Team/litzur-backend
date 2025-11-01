@@ -5,6 +5,7 @@ const users: User[] = [
     id: '1', 
     name: 'Alice', 
     email: 'alice@example.com',
+    password: '$2b$10$abcdefghijklmnopqrstuv', // senha: 123456
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -12,6 +13,7 @@ const users: User[] = [
     id: '2', 
     name: 'Bob', 
     email: 'bob@example.com',
+    password: '$2b$10$abcdefghijklmnopqrstuv', // senha: 123456
     createdAt: new Date(),
     updatedAt: new Date()
   }
@@ -28,7 +30,11 @@ class UserRepository {
     return users.find(user => user.id === id);
   }
 
-  create(userData: CreateUserDto): User {
+  findByEmail(email: string): User | undefined {
+    return users.find(user => user.email === email);
+  }
+
+  create(userData: CreateUserDto & { password: string }): User {
     const newUser: User = { 
       id: (nextId++).toString(),
       ...userData,
