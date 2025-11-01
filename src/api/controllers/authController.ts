@@ -3,6 +3,8 @@ import UserRepository from "../../core/repositories/userRepository.js";
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import { generateToken } from '../../utils/jwt.js';
+import { loginSchema } from '../validators/auth.validator.js';
+import { formatZodError } from '../validators/zodErrorFormatter.js';
 
 export class AuthController{
     private readonly getUserByEmailUseCase: GetUserByEmailUseCase;
@@ -14,7 +16,8 @@ export class AuthController{
 
     async login(req: Request, res: Response){
         try {
-            const { email, password } = req.body;
+            // validatedBody is populated by validateBody middleware
+            const { email, password } = (req as any).validatedBody ?? req.body;
             const user = await this.getUserByEmailUseCase.execute(email)
 
             if (!user) {
