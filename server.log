@@ -1,0 +1,10 @@
+
+> litzur-backend@1.0.0 dev
+> tsx watch src/server.ts
+
+[dotenv@17.2.3] injecting env (5) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+Servidor rodando na porta 3000
+15:14:34 [tsx] Return key Restarting...
+c[dotenv@17.2.3] injecting env (5) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+Servidor rodando na porta 3000
+^C

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ZodTypeAny, ZodError } from 'zod';
+import { ZodTypeAny } from 'zod';
 import { formatZodError } from '../api/validators/zodErrorFormatter.js';
 
 export function validateBody(schema: ZodTypeAny) {
