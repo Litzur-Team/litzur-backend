@@ -19,7 +19,7 @@ class UserController {
 
   async getAllUsers(req: Request, res: Response): Promise<void> {
     try {
-      const users = this.userService.getAllUsers();
+      const users = await this.userService.getAllUsers();
       res.status(200).json(users);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Erro interno do servidor';
@@ -35,7 +35,7 @@ class UserController {
         return;
       }
       
-      const user = this.userService.getUserById(id);
+      const user = await this.userService.getUserById(id);
       
       if (!user) {
         res.status(404).json({ message: 'Usuário não encontrado' });
@@ -70,7 +70,7 @@ class UserController {
       }
       // validatedBody is populated by validateBody middleware
       const userData: UpdateUserDto = (req as any).validatedBody ?? req.body;
-      const user = this.userService.updateUser(id, userData);
+      const user = await this.userService.updateUser(id, userData);
       res.status(200).json(user);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Erro ao atualizar usuário';
@@ -87,7 +87,7 @@ class UserController {
         return;
       }
       
-      this.userService.deleteUser(id);
+      await this.userService.deleteUser(id);
       res.status(204).send();
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Erro ao deletar usuário';

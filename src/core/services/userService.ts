@@ -8,12 +8,12 @@ class UserService {
     this.userRepository = userRepository;
   }
 
-  getAllUsers(): User[] {
-    return this.userRepository.getAll();
+  async getAllUsers(): Promise<User[]> {
+    return await this.userRepository.getAll();
   }
 
-  getUserById(id: string): User | undefined {
-    return this.userRepository.getById(id);
+  async getUserById(id: string): Promise<User | null> {
+    return await this.userRepository.getById(id);
   }
 
   async createUser(userData: CreateUserDto): Promise<User> {
@@ -31,26 +31,26 @@ class UserService {
     const bcrypt = await import('bcrypt');
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     
-    return this.userRepository.create({
+    return await this.userRepository.create({
       ...userData,
       password: hashedPassword
     });
   }
 
-  updateUser(id: string, userData: UpdateUserDto): User | undefined {
-    const existingUser = this.userRepository.getById(id);
+  async updateUser(id: string, userData: UpdateUserDto): Promise<User | null> {
+    const existingUser = await this.userRepository.getById(id);
     if (!existingUser) {
       throw new Error('Usuário não encontrado.');
     }
-    return this.userRepository.update(id, userData);
+    return await this.userRepository.update(id, userData);
   }
 
-  deleteUser(id: string): boolean {
-    const existingUser = this.userRepository.getById(id);
+  async deleteUser(id: string): Promise<boolean> {
+    const existingUser = await this.userRepository.getById(id);
     if (!existingUser) {
       throw new Error('Usuário não encontrado.');
     }
-    return this.userRepository.delete(id);
+    return await this.userRepository.delete(id);
   }
 }
 
