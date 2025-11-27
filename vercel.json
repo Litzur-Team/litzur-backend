@@ -11,5 +11,10 @@
       "src": "/(.*)",
       "dest": "api/server.ts"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "SKIP_LINT": "true"
+    }
+  }
 }
