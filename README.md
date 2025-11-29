@@ -392,12 +392,21 @@ npx prisma migrate reset
 
 Este projeto está sob a licença ISC.
 
-## 👨‍💻 Equipe
+## 👨‍💻 Autores
 
-Desenvolvido pela **Litzur Team** como parte do Projeto Integrador da FATEC.
+Desenvolvido pela **Litzur Team** como parte do Projeto Integrador da FATEC:
+
+- **Thiago Moreira**
+- **Jean Tomaz**
+- **Vinicius Ferreira**
+- **Emerson Felipe**
+
+## 🌐 Links do Projeto
+
+- **Backend API:** [https://litzur-backend.vercel.app](https://litzur-backend.vercel.app)
+- **Documentação (Swagger):** [https://litzur-backend.vercel.app/docs](https://litzur-backend.vercel.app/docs)
+- **Repositório:** [https://github.com/Litzur-Team/litzur-backend](https://github.com/Litzur-Team/litzur-backend)
 
 ---
 
 ⭐ **Deixe uma estrela se este projeto te ajudou!**
-
-📚 **Documentação completa:** `http://localhost:3000/docs`
